@@ -1,7 +1,15 @@
 import express from 'express'
+
 import UsersRoutes from './routes/users.routes.js'
+
 export default class Server{
+    
     static app = express()
+
+    static middlewares(){
+      Server.app.use(express.json)
+      Server.app.use(express.urlencoded({extended : true}))
+    }
 
 static routes() {
     const users = new UsersRoutes()
@@ -16,6 +24,7 @@ Server.app.use('/products', products.router)
     }
     static run(port) {
         console.clear()
+        Server.middlewares()
         Server.routes()
         Server.runServer()
     }

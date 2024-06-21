@@ -1,9 +1,12 @@
+import usersmock from '../db/users.mock.js'
 export default class UsersControllers{
     
-constructor(){}
+constructor(){
+    this.users = usersmock
+}
 
 getAllUsers = (req, res) => {
-    res.send('get usuarios desde controllers')
+    res.json(this.users)
 }
 
 createUsers = (req, res) => {
