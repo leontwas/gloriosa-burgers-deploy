@@ -1,55 +1,76 @@
-import usersmock from '../db/users.mock.js'
-import UsersHelpers from '../helpers/users.helpers.js'
-export default class UsersControllers{
-    
-constructor(){
-    this.users = usersmock
-    this.helpers = new UsersHelpersHelpers()
-}
+import UsersDaoMemory from '../db/daos/users.dao.memory.js';
+import UsersHelpers from '../helpers/users.helpers.js';
 
-getAllUsers = (req, res) => {
-    res.json(this.users)
-}
-
-getUsersById = (req, res) => {
-    const {id} = req.params.id
-    const user = this.user.find(user => 
-        user.id === parseInt(id))
-        res.json(user? user: {user: null})
-}
-
-getUsersByNombre = (req, res) => {
-    const resultado = this.user.find(user => 
-        user.nombre.toLowerCase() === req.query.nombre.toLowerCase())
-        res.json(resultado)
-}
-
-createUsers = (req, res) => {
-    const user = this.helpers.parseUsers(req.body)
-    this.user.push(user) 
-    res.send('Post usu  rios desde controllers')
-    res.json(user)
-}    
-
-updateUsers = (req, res) => {
-    let modUser = null
-    this.users = this.users.map(user => {   
-    if (user.id === parseInt(req.body.id)){
-        user = this.helpers.parseInt(req.body)
-        modUser = user
+export default class UsersControllers {
+    constructor() {
+        this.db = new UsersDaoMemory();
+        this.helpers = new UsersHelpers();
     }
-    return user
-    })
-    res.send ('Update usuarios desde controllers')
-    res.json (modUser)
-}
 
-deleteUsers = (req, res) => {
-    const {id} = req.params.id
-    this.user = this.users.filter(user => user.id !== parseInt(id))
-    res.send ('Delete usuarios desde controllers')
-    res.json (this.users)
-}
+    getAllUsers = (req, res) => {
+        try {
+            const users = this.db.getAllUsers();
+            res.json(users);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 
-}
+    getUsersById = (req, res) => {
+        try {
+            const { id } = req.params;
+             if (!user) {
+           const user = this.db.getUsersById(id);
+                res.status(404).json({ message: 'User not found' });
+                return;
+            }
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 
+    getUsersByNombre = (req, res) => {
+        try {
+            const { nombre } = req.query;
+            if (!nombre) {
+                res.status(400).json({ message: 'Missing nombre query parameter' });
+                return;
+            }
+            const resultado = this.db.getUsersByNombre(nombre);
+            res.json(resultado);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    createUsers = (req, res) => {
+        try {
+            const user = this.helpers.parseUsers(req.body);
+            const resultado = this.db.createUsers(user);
+            res.json(resultado);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    updateUsers = (req, res) => {
+        try {
+            const user = this.helpers.parseInt(req.body);
+            const resultado = this.db.updateUsers(user);
+            res.json(resultado);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    deleteUsers = (req, res) => {
+        try {
+            const { id } = req.params;
+            const resultado = this.db.deleteUsers(id);
+            res.json(resultado);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+}
