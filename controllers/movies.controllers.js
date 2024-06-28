@@ -1,6 +1,12 @@
+import MoviesDaoMemory from '../db/daos/movies.dao.memory.js';
+import MoviesHelpers from '../helpers/movies.helpers.js';
+
 export default class MovieControllers {
-    
-    constructor(){}
+
+        constructor() {
+            this.db = new MoviesDaoMemory();
+            this.helpers = new MoviesHelpers();
+        }
     
     getAllMovies = (req, res) => {
         try {
