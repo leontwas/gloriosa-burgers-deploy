@@ -3,29 +3,29 @@ import moviesMock from '../mocks/movies.mock.js'
 export default class MoviesDaoMemory {
   
     constructor () {
-        this.movie = moviesMockMock
+        this.movies = moviesMock
     }
 
 getAllMovies () {
-    res.send ('Usuarios encontrados: ')
+    res.send ('Películas encontradas: ')
     return this.movies
 }
 
-getUsersById(id) {
-    const movie = this.movie.find(movie => 
+getMoviesById(id) {
+    const movie = this.movies.find(movie => 
         movie.id === parseInt(id))
         res.send ('Película encontrada por Id: ')
         return movie
 }
 
-getMovieByNombre(nombre) {
-    const resultado = this.movie.find(movie => 
+getMoviesByNombre(nombre) {
+    const resultado = this.movies.find(movie => 
         movie.nombre.toLowerCase() === req.query.movie.toLowerCase())
         res.send ('Películas encontradas por nombre: ')
         return resultado
 }
 
-createMovie(movie) {
+createMovies(movie) {
     this.movie.push(movie)
     res.send ('Película creada desde controllers')
     return true
@@ -46,7 +46,7 @@ updateMovies(data) {
 
 deleteMovies (id) {
     let oldlength = this.movie.length
-    this.movie = this.movies.filter(movie => 
+    this.movies = this.movies.filter(movie => 
         movie.id !== parseInt(id))
         return oldLength !== this.movie.length
 }

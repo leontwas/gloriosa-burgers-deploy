@@ -1,53 +1,50 @@
-import usersMock from '../mocks/users.mock.js'
+import usersMock from '../mocks/users.mock.js';
 
 export default class UsersDaoMemory {
-  
-    constructor () {
-        this.user = usersMock
+    constructor() {
+        this.users = usersMock;
     }
 
-getAllUsers () {
-    res.send ('Usuarios encontrados: ')
-    return this.users
-}
+    getAllUsers() {
+        console.log('Usuarios encontrados:');
+        return this.users;
+    }
 
-getUsersById(id) {
-    const user = this.user.find(user => 
-        user.id === parseInt(id))
-        res.send ('Usuario encontrado por Id: ')
-        return user
-}
+    getUserById(id) {
+        const user = this.users.find(user => user.id === parseInt(id));
+        console.log('Usuario encontrado por Id:');
+        return user;
+    }
 
-getUsersByNombre(nombre) {
-    const resultado = this.user.find(user => 
-        user.nombre.toLowerCase() === req.query.nombre.toLowerCase())
-        res.send ('Usuarios encontrados por nombre: ')
-        return resultado
-}
+    getUsersByNombre(nombre) {
+        const resultado = this.users.filter(user => user.nombre.toLowerCase() === nombre.toLowerCase());
+        console.log('Usuarios encontrados por nombre:');
+        return resultado;
+    }
 
-createUsers(user) {
-    this.user.push(user)
-    res.send ('Usuario creado desde controllers')
-    return true
-}    
+    createUser(user) {
+        this.users.push(user);
+        console.log('Usuario creado desde controllers');
+        return true;
+    }
 
-updateUsers(data) {
-    let modUser = null
-    this.users = this.users.map(user => {   
-        if (user.id === data.id) {
-        user = data
-        modUser = user
-        }
-        return user
-    })
-    res.send ('Usuario actualizado desde controllers')
-    return modUser
-}
+    updateUser(data) {
+        let modUser = null;
+        this.users = this.users.map(user => {
+            if (user.id === data.id) {
+                user = data;
+                modUser = user;
+            }
+            return user;
+        });
+        console.log('Usuario actualizado desde controllers');
+        return modUser;
+    }
 
-deleteUsers (id) {
-    let oldlength = this.user.length
-    this.user = this.users.filter(user => 
-        user.id !== parseInt(id))
-        return oldLength !== this.user.length
-}
+    deleteUser(id) {
+        const oldLength = this.users.length;
+        this.users = this.users.filter(user => user.id !== parseInt(id));
+        console.log('Usuario eliminado desde controllers');
+        return oldLength !== this.users.length;
+    }
 }

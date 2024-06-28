@@ -1,4 +1,4 @@
-const mock = [
+const usersMock = [
     {
         id: 1,
         nombre: 'Leonardo',
@@ -19,4 +19,4 @@ const mock = [
 
 ]
 
-export default mock
+export default usersMock
