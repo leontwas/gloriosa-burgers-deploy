@@ -1,18 +1,22 @@
 {
+  "type": "module",
   "name": "gloriosa-burgers-deploy",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Grupo_8_CaC",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.19.2"
+    "bootstrap": "^5.3.3",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.3"
+    "nodemon": "^3.1.4"
   }
 }
