@@ -22,8 +22,8 @@ const __dirname = path.dirname(__filename);
 const PORT = 3000;
 
 // Ruta para servir el archivo reservas.html
-app.get('/src/htmls/reservas', (req, res) => {
-    res.sendFile(path.join(__dirname, 'src', 'htmls', 'reservas.html'));
+app.get('/public/reservas', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'reservas.html'));
 });
 
 app.listen(PORT, () => {
