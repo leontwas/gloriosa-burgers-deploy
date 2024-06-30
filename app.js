@@ -19,6 +19,9 @@ app.get("/miRuta", (req, res) => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
 const PORT = 3000;
 
 // Ruta para servir el archivo reservas.html
