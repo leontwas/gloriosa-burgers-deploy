@@ -7,14 +7,6 @@ const app = express();
 
 app.use(express.json());
 
-/*
-app.use('/movies', movieRoutes);
-
-app.get("/miRuta", (req, res) => {
-    res.send('Hola Mundo!');
-});
-*/
-
 // Obtener el nombre de archivo y directorio actual
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,9 +16,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = 3000;
 
+// Ruta para servir el archivo index.html
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Ruta para servir el archivo productos.html
+app.get('/productos', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'productos.html'));
+});
+
+// Ruta para servir el archivo novedades.html
+app.get('/novedades', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'novedades.html'));
+});
+
 // Ruta para servir el archivo reservas.html
-app.get('/public/reservas', (req, res) => {
+app.get('/reservas', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'reservas.html'));
+});
+
+// Ruta para servir el archivo nosotros.html
+app.get('/nosotros', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'nosotros.html'));
 });
 
 app.listen(PORT, () => {
