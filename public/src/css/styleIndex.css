@@ -27,10 +27,10 @@ h1 {
     
     body::before {
         content: "";
-        background-image: url(./public/assets/Imagenes/fondos/paraCelular.png);
+        background-image: url(/assets/Imagenes/fondos/paraCelular.png);
         opacity: 0.8;
         position: absolute;
-        background-size:cover;
+        background-size: cover;
         top: 0;
         left: 0;
         right: 0;
@@ -40,7 +40,7 @@ h1 {
     
     body {
         font-family: "Kalam", cursive;
-        background-size:cover;
+        background-size: cover;
     }
 
     .section1 {
@@ -58,7 +58,7 @@ h1 {
         font-size: 6vw;
     }
 
-      .section {
+    .section {
         color: white;
         text-align: center;
         font-size: 3.5vw;
@@ -67,18 +67,18 @@ h1 {
         width: 20vW;
         min-width: 85vw;
         max-width: max-content;
-        background-color:rgba(19, 20, 20, 0.6); 
+        background-color: rgba(19, 20, 20, 0.6); 
         border-radius: 40%;
         transition: transform 0.5s ease-in-out;
         border: none; 
     }
-   
-    .opciones{
+
+    .opciones {
         margin-bottom: 56px;
         margin-left: 7px;
     }
 
-     .reservar, .retirar, .enviar {
+    .reservar, .retirar, .enviar {
         background-color: transparent;
         border: none;
         margin-top: 0px;
@@ -90,34 +90,33 @@ h1 {
         color: black;
         background-color: rgb(13, 140, 145);
         border-bottom-style: dotted;
-
+        
         .enlace-boton {
             color: black;
-        }
-    }  
+            }
+    }
 }
 
 /************************************************ Tablets mediaQueri *********************************************************/
-@media only screen and (min-width: 651px) and (max-width: 850px)  {
+@media only screen and (min-width: 651px) and (max-width: 850px) {
     body {
         position: relative;
     }
     
     body::before {
         content: "";
-        background-image: url(./public//assets//Imagenes/fondos/burgerMed.jpg);
+        background-image: url(/assets/Imagenes/fondos/burgerMed.jpg);
         position: absolute;
-        background-size:cover;
+        background-size: cover;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         z-index: -1; 
     }
-     
+    
     body {
-
-        font-family:"Kalam", cursive;
+        font-family: "Kalam", cursive;
         background-attachment: fixed;
         display: flex;
         flex-direction: column;
@@ -135,11 +134,11 @@ h1 {
     }
 
     .section {
-        font-size:2vw;
+        font-size: 2vw;
         padding: 20px 20px;
         width: 20vW;
         min-width: 52vw;
-        max-width:min-content;
+        max-width: min-content;
         text-align: center;
         color: white;
         margin-top: 20px;
@@ -148,77 +147,79 @@ h1 {
         margin-bottom: 5px;
         background-color: rgba(37, 102, 37, 0.4);
         border-radius: 40%;
-        border-bottom-style:dotted;
+        border-bottom-style: dotted;
         transition: transform 0.5s ease-in-out;
         border: none; 
     }
 
-.reservar, .retirar, .enviar {
-    background-color: transparent;
-    border: none;
-}
+    .reservar, .retirar, .enviar {
+        background-color: transparent;
+        border: none;
+    }
 
     .section2 {
-        font-size:3.5vw;
+        font-size: 3.5vw;
         font-weight: bold;
-        color:darkred;
+        color: darkred;
         padding: 10px 10px;
         width: 50vW;
         min-width: 65vw;
-        max-width:min-content;
+        max-width: min-content;
         text-align: center;
         margin-top: -15px;
         margin-left: -50px;
         margin-bottom: -15px;
     }
+
     .section:hover {
         transform: scale(1.05) translateY(-10px);
         color: black;
         background-color: rgb(57, 196, 184); 
-        border-bottom-style:dotted;
+        border-bottom-style: dotted;
 
         .enlace-boton {
             color: black;
-        }
-    } 
+            }
+    }
 
-    .opciones{
-        margin-bottom:200px;
+    .opciones {
+        margin-bottom: 200px;
     }
 }
 
 /************************************************** Notebooks mediaQueri ****************************************************/
-@media only screen and (min-width: 850px)  {
+@media only screen and (min-width: 850px) {
     body {
-        font-family:  "Kalam", cursive;
+        font-family: "Kalam", cursive;
         color: rgb(10, 10, 10);
         background-attachment: fixed;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         overflow-x: hidden;
-        background-image: url(./public/assets/Imagenes/fondos/fondoMax.png);
+        background-image: url(/assets/Imagenes/fondos/fondoMax.png);
         background-size: cover;
     }
+
     .section1 {
         margin-top: -10px;
         font-size: 2.5vw;
         text-align: center;
-}
+    }
 
     .section2 {
         color: rgb(15, 7, 100);
-        font-size: 2.3vw; 
+        font-size: 2.3vw;
         width: 50vW;
         min-width: 65vw;
-        max-width:min-content;
+        max-width: min-content;
         text-align: center;
         margin-top: -20px;
     }
 
-     .section {
+    .section {
         color: rgb(253, 116, 3);
-        font-size: 1.2vw; 
+        font-size: 1.2vw;
         width: 10vW;
         min-width: 65vw;
         max-width: min-content;
@@ -227,13 +228,12 @@ h1 {
         margin-left: 10px;
         margin-bottom: 20px;
         padding-top: 30px;
-        background-color: rgba(87, 1, 72, 0.5); 
+        background-color: rgba(87, 1, 72, 0.5);
         border-radius: 40%;
         border-bottom-style: dotted;
         transition: transform 0.5s ease-in-out;
         border: none; 
     }
-    
 
     .reservar, .retirar, .enviar {
         background-color: transparent;
@@ -242,18 +242,16 @@ h1 {
 
     .section:hover {
         transform: scale(1.05) translateY(-10px);
-        background-color: rgb(198, 240, 9); 
-        border-bottom-style:dotted;
+        background-color: rgb(198, 240, 9);
+        border-bottom-style: dotted;
         border-color: rgb(0, 0, 0);
-
+        
         .enlace-boton {
-            color: black;
+        color: black;
         }
-    } 
+    }
 
-    .opciones{
-        margin-bottom: 160px
+    .opciones {
+        margin-bottom: 160px;
     }
 }
-
-

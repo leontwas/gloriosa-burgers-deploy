@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import movieRoutes from './src/routes/movies.routes.js';
 
 const app = express();
 
@@ -14,31 +13,26 @@ const __dirname = path.dirname(__filename);
 // Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Servir archivos estáticos desde la carpeta 'public/src/css'
+app.use(express.static(path.join(__dirname, 'public', 'src', 'css')));
+
+
 const PORT = 3000;
 
 // Ruta para servir el archivo index.html
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Ruta para servir el archivo productos.html
-app.get('/productos', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'productos.html'));
-});
-
-// Ruta para servir el archivo novedades.html
-app.get('/novedades', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'novedades.html'));
-});
-
-// Ruta para servir el archivo reservas.html
-app.get('/reservas', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'reservas.html'));
-});
-
-// Ruta para servir el archivo nosotros.html
-app.get('/nosotros', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'nosotros.html'));
+// Ruta para servir otros archivos HTML
+app.get('/:page', (req, res) => {
+    const page = req.params.page;
+    const validPages = ['productos', 'novedades', 'reservas', 'nosotros'];
+    if (validPages.includes(page)) {
+        res.sendFile(path.join(__dirname, 'public', `${page}.html`));
+    } else {
+        res.status(404).send('Página no encontrada');
+    }
 });
 
 app.listen(PORT, () => {
