@@ -11,7 +11,7 @@ getAllMovies () {
     return this.movies
 }
 
-getMoviesById(id) {
+getMovieById(id) {
     const movie = this.movies.find(movie => 
         movie.id === parseInt(id))
         res.send ('Película encontrada por Id: ')

@@ -16,7 +16,7 @@ export default class UsersDaoMemory {
         return user;
     }
 
-    getUsersByNombre(nombre) {
+    getUserByNombre(nombre) {
         const resultado = this.users.filter(user => user.nombre.toLowerCase() === nombre.toLowerCase());
         console.log('Usuarios encontrados por nombre:');
         return resultado;
