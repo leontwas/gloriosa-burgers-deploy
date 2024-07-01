@@ -18,6 +18,7 @@ export default class Server {
         Server.app.use('/movie', movies.router);
         Server.app.use('/user', users.router);
         Server.app.use('/products', products.router);
+        Server.app.use('/reserva', reservas.router)
     }
 
     static runServer(port) {
